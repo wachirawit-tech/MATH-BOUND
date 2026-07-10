@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MATH BOUND - ปลายทางแห่งเครื่องหมาย | ดาวน์โหลดเกมต่อสู้คณิตศาสตร์สุดมันส์</title>
+    <meta name="description"
+        content="ดาวน์โหลดเกม MATH BOUND (ปลายทางแห่งเครื่องหมาย) เกมการศึกษาแนวต่อสู้ Turn-Based RPG บน platform Unity ที่คำตอบของคุณคือการโจมตี ฝึกฝนทักษะคณิตศาสตร์ผ่านด่านสุดท้าทาย!">
+    <meta name="keywords"
+        content="Math Bound, ปลายทางแห่งเครื่องหมาย, เกมคณิตศาสตร์, เกมต่อสู้คณิตศาสตร์, เกมการศึกษา, ดาวน์โหลดเกม, Unity, Turn-Based RPG, เกมวิชาการ">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Inter:wght@300;400;600;800&family=Press+Start+2P&family=Sarabun:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom Style Sheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="theme-day">
+    <!-- Background overlay for meteors/stars -->
+    <div id="particle-canvas-container"></div>
+    <div class="sky-gradient-overlay"></div>
+
+    <!-- Navigation Header -->
+    <header class="main-header">
+        <div class="container header-container">
+            <a href="#" class="logo-link">
+                <img src="assets/logo.png" alt="MATH BOUND Logo" class="nav-logo" id="main-logo">
+            </a>
+            <nav class="main-nav" id="main-nav">
+                <ul>
+                    <li><a href="#hero"><i class="fa-solid fa-house"></i> หน้าแรก</a></li>
+                    <li><a href="#demo"><i class="fa-solid fa-gamepad"></i> ระบบการเล่น</a></li>
+                    <li><a href="#map"><i class="fa-solid fa-map-location-dot"></i> ด่านทั้งหมด</a></li>
+                    <li><a href="#characters"><i class="fa-solid fa-users"></i> ตัวละคร</a></li>
+                    <li><a href="#features"><i class="fa-solid fa-circle-info"></i> ข้อมูลเกม</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <button class="theme-toggle-btn" id="theme-toggle" title="สลับธีมกลางวัน/กลางคืน">
+                    <i class="fa-solid fa-moon moon-icon"></i>
+                    <i class="fa-solid fa-sun sun-icon"></i>
+                </button>
+                <a href="#download" class="btn btn-primary nav-download-btn"><i class="fa-solid fa-download"></i>
+                    ดาวน์โหลด</a>
+                <button class="mobile-nav-toggle" id="mobile-toggle" aria-label="Toggle menu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Banner -->
+    <section id="hero" class="hero-section">
+        <div class="container hero-container">
+            <div class="hero-content">
+                <div class="game-badge">Unity Game • Turn-Based Combat</div>
+                <h1 class="hero-title">ปลายทางแห่งเครื่องหมาย</h1>
+                <h2 class="hero-subtitle">MATH BOUND</h2>
+                <p class="hero-description">
+                    เมื่อวิชาเลขไม่ได้อยู่แค่ในกระดาษ! ทะยานสู่อภิมหาการต่อสู้ในโลกคณิตศาสตร์โบราณ
+                    ท้าทายสมองของคุณด้วยระบบเทิร์นเบสสุดตื่นเต้น ที่ทุก <strong>"สมการ"</strong> คือ
+                    <strong>"การโจมตี"</strong>
+                    ฝ่าฟันด่านทักษะ บวก ลบ คูณ หาร และเผชิญหน้ากับบอสใหญ่ ณ ปราสาทจอมมาร!
+                </p>
+                <div class="hero-actions">
+                    <a href="#download" class="btn btn-large btn-glowing"><i class="fa-solid fa-download"></i>
+                        ดาวน์โหลดฟรี (Windows)</a>
+                    <a href="#demo" class="btn btn-large btn-secondary"><i class="fa-solid fa-eye"></i>
+                        ดูระบบการเล่น</a>
+                </div>
+                <div class="hero-meta">
+                    <span><i class="fa-solid fa-shield-halved"></i> ฝึกสมอง</span>
+                    <span><i class="fa-solid fa-fire-flame-curved"></i> คอมโบโจมตี</span>
+                    <span><i class="fa-solid fa-trophy"></i> เอาชนะจอมมาร</span>
+                </div>
+            </div>
+        </div>
+        <div class="hero-divider"></div>
+    </section>
+
+    <!-- Gameplay Preview Section -->
+    <section id="demo" class="demo-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag font-pixel">GAMEPLAY</span>
+                <h2 class="section-title">ระบบการเล่นของเกม</h2>
+                <p class="section-desc">การคำนวณคืออาวุธของคุณ! เรียนรู้คณิตศาสตร์อย่างเป็นธรรมชาติผ่านรูปแบบ Turn-Based
+                    Combat</p>
+            </div>
+
+            <!-- Sleek monitor/screen layout displaying the screenshot -->
+            <div class="gameplay-frame-wrapper">
+                <div class="gameplay-screen-ratio">
+                    <img src="assets/demo_screenshot.jpg" alt="MATH BOUND Gameplay Battle Screen"
+                        class="gameplay-preview-img">
+                </div>
+            </div>
+
+            <div class="demo-instructions">
+                <div class="info-card">
+                    <i class="fa-solid fa-gamepad icon-accent"></i>
+                    <h4>ระบบการต่อสู้สลับเทิร์น (Turn-Based)</h4>
+                    <p>การตอบโจทย์คณิตศาสตร์คือคำสั่งโจมตี! ทุกๆ เทิร์นจะมีเกจเวลานับถอยหลัง
+                        โดยมีระบบคอมโบเมื่อผู้เล่นคำนวณอย่างถูกต้องต่อเนื่องเพื่อปลดปล่อยพลังโจมตีที่รุนแรงกว่าปกติ</p>
+                </div>
+                <div class="info-card">
+                    <i class="fa-solid fa-skull-crossbones icon-accent"></i>
+                    <h4>บอสและกลไกพิเศษ</h4>
+                    <p>ศัตรูระดับหัวหน้าหรือบอสในแต่ละด่านจะมีรูปแบบความถนัดด้านคณิตศาสตร์และเงื่อนไขเฉพาะตัวที่แตกต่างกัน
+                        เช่น มังกรบาเลเลี่ยน (การลบ) มังกรเวย์ก้า (สมการขั้นสูง) และบอสอัศวินทมิฬ</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Level Map Section -->
+    <section id="map" class="map-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag font-pixel">WORLD MAP</span>
+                <h2 class="section-title">ปลายทางแห่งเครื่องหมาย</h2>
+                <p class="section-desc">การเดินทางของนักรบตัวเลขผ่านดินแดนคณิตศาสตร์ทั้ง 6 ด่าน
+                    สู่ปราสาทจอมมารชั้นสูงสุด</p>
+            </div>
+
+            <div class="map-showcase-container">
+                <!-- Left: Interactive Map Container -->
+                <div class="interactive-map-wrapper">
+                    <div class="map-image-container">
+                        <img src="assets/screenshot_map.jpg" alt="MATH BOUND World Map" class="world-map-img">
+
+                        <!-- Level Node 1 -->
+                        <button class="map-node active" style="top: 58%; left: 35%;" data-level="1"
+                            title="ด่านที่ 1: ป่าแห่งการบวก">
+                            <span class="node-num font-pixel">1</span>
+                            <span class="node-radar"></span>
+                        </button>
+
+                        <!-- Level Node 2 -->
+                        <button class="map-node" style="top: 53%; left: 79%;" data-level="2"
+                            title="ด่านที่ 2: ทะเลทรายแห่งการลบ">
+                            <span class="node-num font-pixel">2</span>
+                            <span class="node-radar"></span>
+                        </button>
+
+                        <!-- Level Node 3 -->
+                        <button class="map-node" style="top: 30%; left: 29%;" data-level="3"
+                            title="ด่านที่ 3: ซากโบราณแห่งการคูณ">
+                            <span class="node-num font-pixel">3</span>
+                            <span class="node-radar"></span>
+                        </button>
+
+                        <!-- Level Node 4 -->
+                        <button class="map-node" style="top: 25%; left: 70%;" data-level="4"
+                            title="ด่านที่ 4: ปราสาทแห่งการหาร">
+                            <span class="node-num font-pixel">4</span>
+                            <span class="node-radar"></span>
+                        </button>
+
+                        <!-- Level Node 5 -->
+                        <button class="map-node" style="top: 40%; left: 50%;" data-level="5"
+                            title="ด่านที่ 5: เสาหินพายุแปรผัน">
+                            <span class="node-num font-pixel">5</span>
+                            <span class="node-radar"></span>
+                        </button>
+
+                        <!-- Level Node 6 -->
+                        <button class="map-node" style="top: 15%; left: 50%;" data-level="6"
+                            title="ด่านที่ 6: ปลายทางปราสาทจอมมาร">
+                            <span class="node-num font-pixel">6</span>
+                            <span class="node-radar"></span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Right: Level Details Card -->
+                <div class="level-detail-card-wrapper">
+                    <div class="level-detail-card" id="level-detail-card">
+                        <div class="detail-header">
+                            <div class="detail-badge font-pixel" id="detail-lvl-badge">LEVEL 1</div>
+                            <h3 id="detail-title">ป่าแห่งการเริ่มต้น (The Forest of Beginnings)</h3>
+                        </div>
+                        <div class="detail-body">
+                            <div class="detail-stat">
+                                <strong><i class="fa-solid fa-brain"></i> ทักษะที่ได้เรียนรู้:</strong>
+                                <span id="detail-skill" class="skill-pill">การบวกเลขจำนวนเต็ม (1-2 หลัก)</span>
+                            </div>
+                            <div class="detail-stat">
+                                <strong><i class="fa-solid fa-skull"></i> บอสประจำด่าน:</strong>
+                                <span id="detail-boss" class="boss-name">Dark Knight (อัศวินทมิฬ)</span>
+                            </div>
+                            <p class="detail-desc" id="detail-description">
+                                ด่านที่ 1 ผู้กล้าแห่งความหวังจะได้เรียนรู้กลไกตอบโจทย์เลข 'การบวก' เพื่อโจมตี
+                            </p>
+
+                            <div class="detail-preview-img-container">
+                                <img src="assets/+lv.png" alt="Level Battle Preview" class="detail-preview-img"
+                                    id="detail-preview-img">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Character Showcase -->
+    <section id="characters" class="characters-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag font-pixel">HEROES & MONSTERS</span>
+                <h2 class="section-title">แนะนำตัวละคร</h2>
+                <p class="section-desc">
+                    ทำความรู้จักกับตัวละครหลักที่จะเคียงข้างคุณและเหล่าร้ายที่รอท้าทายทักษะคณิตศาสตร์ของคุณ</p>
+            </div>
+
+            <div class="character-grid">
+                <!-- Character 1: Hero Leo -->
+                <div class="char-card">
+                    <div class="char-img-container">
+                        <img src="assets/hero.png" alt="Leo Hero Sprite" class="char-pixel-img hover-animation">
+                    </div>
+                    <div class="char-info">
+                        <div class="char-role font-pixel">HERO</div>
+                        <h3 class="char-name">ผู้กล้าแห่งความหวัง (The Heroes of Hope)</h3>
+                        <p class="char-bio">
+                            วันที่จอมมารมอร์กอธบุกโจมตีอาณาจักร ขณะที่ทุกคนวิ่งหนี เขากลับยืนนิ่งอยู่กลางลานหมู่บ้าน
+                            และในชั่วพริบตานั้นเอง ดาบศักดิ์สิทธิ์เวอริทัส ก็ปรากฏขึ้นอยู่เบื้องหน้าเขา
+                            เปล่งแสงสีฟ้ารอให้เขาหยิบขึ้นมา
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Character 2: Dark Knight -->
+                <div class="char-card">
+                    <div class="char-img-container">
+                        <img src="assets/dark_knight.png" alt="Dark Knight Sprite"
+                            class="char-pixel-img hover-animation">
+                    </div>
+                    <div class="char-info">
+                        <div class="char-role font-pixel dark-role">FINAL BOSS</div>
+                        <h3 class="char-name">จอมมารมอร์กอธ (Morgoth)</h3>
+                        <p class="char-bio">
+                            มอร์กอธไม่ได้เกิดมาเป็นสิ่งชั่วร้าย เขาเคยเป็น "ผู้พิทักษ์แห่งสมดุล" ของโลกปีศาจมิติที่ 0
+                            ผู้มีหน้าที่รักษาความสมดุลระหว่างทุกมิติในจักรวาล
+                            แต่เมื่อเขาค้นพบว่าอาณาจักรเทมเพลสกำลังขยายพลังงานออกมามากเกินสมดุล
+                            เขาจึงตัดสินใจว่าวิธีเดียวที่จะรักษาสมดุลของจักรวาลได้คือการทำให้ทุกสิ่งกลับสู่ศูนย์
+                            ความคิดนี้ค่อยๆ กัดกร่อนจิตใจของเขาจนกลายเป็นความบ้าคลั่ง จากผู้พิทักษ์ที่เคยยุติธรรม
+                            เขากลายเป็น จอมมารมอร์กอธ ผู้ต้องการลบล้างทุกสิ่งออกจากการดำรงอยู่
+
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Character 3: Balelian Dragon -->
+                <div class="char-card">
+                    <div class="char-img-container">
+                        <img src="assets/balelian.png" alt="Balelian Dragon Sprite"
+                            class="char-pixel-img hover-animation">
+                    </div>
+                    <div class="char-info">
+                        <div class="char-role font-pixel" style="color: var(--color-accent);">BOSS / GUARDIAN</div>
+                        <h3 class="char-name">มังกรบาเลเลี่ยน (Balelian)</h3>
+                        <p class="char-bio">
+                            มังกรโบราณที่เก่าแก่ที่สุดในบรรดาสามพี่น้อง ร่างกายปกคลุมด้วยเกล็ดสีแดงราวหินลาวา
+                            มีดวงตาสีทองดั่งถ่านไฟลุกโชน
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Character 4: Waygha Dragon -->
+                <div class="char-card">
+                    <div class="char-img-container">
+                        <img src="assets/waygha.png" alt="Waygha Dragon Sprite" class="char-pixel-img hover-animation">
+                    </div>
+                    <div class="char-info">
+                        <div class="char-role font-pixel" style="color: var(--color-secondary);">BOSS / GUARDIAN</div>
+                        <h3 class="char-name">มังกรเวย์ก้า (Waygha)</h3>
+                        <p class="char-bio">
+                            มังกรสายฟ้าที่อายุน้อยที่สุดในบรรดาสามพี่น้อง
+                            ร่างกายเพรียวบางแต่เต็มไปด้วยกระแสไฟฟ้าที่แล่นผ่านเกล็ดตลอดเวลา
+                            มีปีกกว้างใหญ่สร้างพายุฟ้าคะนอง ร่าเริง ชอบแสดงพลัง
+                        </p>
+                    </div>
+                </div>
+
+                <div class="char-card">
+                    <div class="char-img-container">
+                        <img src="assets/kx11.png" alt="Kalaxis Dragon Sprite" class="char-pixel-img hover-animation">
+                    </div>
+                    <div class="char-info">
+                        <div class="char-role font-pixel" style="color: var(--color-secondary);">BOSS / GUARDIAN</div>
+                        <h3 class="char-name">มังกรคาแลคซิส (Kalaxis)</h3>
+                        <p class="char-bio">
+                            คาแลคซิสเป็นมังกรที่ลึกลับที่สุดในสามตัว
+                            ร่างกายปกคลุมด้วยเกล็ดสีขาวเงินที่สะท้อนแสงเหมือนดวงดาวนับล้านดวง
+                            ดวงตาสีแดงลึกราวกับมองทะลุจักรวาล
+                            เคลื่อนไหวช้าและสง่างามราวกับว่าทุกสิ่งรอบข้างเคลื่อนที่ช้าลงเมื่ออยู่ใกล้มัน
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Game Information / Educational Impact -->
+    <section id="features" class="features-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag font-pixel">GAMEPLAY FEATURES</span>
+                <h2 class="section-title">บูรณาการเกมการศึกษาแนวใหม่</h2>
+                <p class="section-desc">ทำไม MATH BOUND จึงเปลี่ยนการเรียนรู้แบบเดิมๆ ให้เข้าถึงง่ายและสนุกกว่าที่เคย?
+                </p>
+            </div>
+
+            <div class="features-grid">
+                <!-- Feature 1 -->
+                <div class="feature-item">
+                    <div class="feature-icon"><i class="fa-solid fa-gamepad"></i></div>
+                    <h3>Turn-Based Combat RPG</h3>
+                    <p>จำลองระบบเกมสไตล์ RPG คลาสสิก มีการแลกเปลี่ยนการโจมตีทีละตาตามเวลาที่กำหนด
+                        ตอบคำถามเป็นคำสั่งโจมตี ให้ความตื่นเต้นเหมือนเล่นเกมผจญภัยทั่วไป</p>
+                </div>
+                <!-- Feature 2 -->
+                <div class="feature-item">
+                    <div class="feature-icon"><i class="fa-solid fa-hourglass-start"></i></div>
+                    <h3>เกจเวลากดดันความเร็ว</h3>
+                    <p>ระบบจับเวลานับถอยหลังช่วยกระตุ้นการตัดสินใจและการทำงานของสมอง (Mental Processing)
+                        ฝึกความเคยชินและความชำนาญในการหาคำตอบอย่างมีระบบ</p>
+                </div>
+                <!-- Feature 3 -->
+                <div class="feature-item">
+                    <div class="feature-icon"><i class="fa-solid fa-bolt"></i></div>
+                    <h3>ระบบ Combo & Damage</h3>
+                    <p>เมื่อผู้เล่นตอบคำถามได้ถูกต้องติดต่อกัน จะเพิ่มอัตราคอมโบส่งผลให้พลังโจมตีรุนแรงขึ้น
+                        ช่วยสร้างความพึงพอใจและจูงใจในการคำนวณอย่างถูกต้องแม่นยำ</p>
+                </div>
+                <!-- Feature 4 -->
+                <div class="feature-item">
+                    <div class="feature-icon"><i class="fa-solid fa-puzzle-piece"></i></div>
+                    <h3>กลไกพิเศษของบอส</h3>
+                    <p>บอสแต่ละตัวในปราสาทจอมมารจะมีเงื่อนไขเฉพาะตัว เช่น มีเกราะป้องกันที่ถูกโจมตีได้ด้วยเลขคี่เท่านั้น
+                        หรือต้องกรอกเลขคู่เพื่อบล็อกการโจมตี ฝึกทักษะการวิเคราะห์อย่างธรรมชาติ</p>
+                </div>
+            </div>
+
+            <div class="educational-block">
+                <div class="edu-content">
+                    <h3>เป้าหมายสูงสุดของโครงการ MATH BOUND</h3>
+                    <p>
+                        คณิตศาสตร์เป็นวิชาพื้นฐานที่สำคัญต่อชีวิตประจำวันและการพัฒนาตรรกะ
+                        ทว่าผู้เรียนส่วนใหญ่กลับมองข้ามเนื่องจากความเคร่งเครียด น่าเบื่อ และเข้าถึงยาก โครงการ MATH
+                        BOUND จึงมุ่งพัฒนาเกมนี้บน Unity เพื่อเป็นสะพานเชื่อมให้เด็กๆ และผู้ที่สนใจ พัฒนาทักษะการบวก ลบ
+                        คูณ หาร ได้อย่างสนุกสนาน ตระหนักถึงความงดงามของตัวเลข และพิสูจน์ให้ทุกคนเห็นว่า
+                        <strong>"เส้นทางแห่งตัวเลขไม่ได้น่ากลัวอย่างที่คิด"</strong>
+                    </p>
+                </div>
+                <div class="edu-visual">
+                    <div class="edu-stat-box">
+                        <div class="edu-stat-num font-pixel">92%</div>
+                        <div class="edu-stat-label">ทัศนคติที่ดีต่อคณิตศาสตร์เพิ่มขึ้น</div>
+                    </div>
+                    <div class="edu-stat-box">
+                        <div class="edu-stat-num font-pixel">2.5x</div>
+                        <div class="edu-stat-label">ความเร็วในการคิดคำนวณเพิ่มขึ้น</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section id="download" class="download-section">
+        <div class="container download-container">
+            <div class="download-content">
+                <span class="download-badge font-pixel">READY TO PLAY</span>
+                <h2>ดาวน์โหลด MATH BOUND !</h2>
+                <p>เตรียมตัวออกเดินทางสู่เส้นทางแห่งตัวเลขและช่วยลีโอกอบกู้ความรู้คณิตศาสตร์ เล่นได้ทันทีบน Windows</p>
+
+                <div class="download-platforms">
+                    <!-- Platform Card: Windows -->
+                    <div class="platform-card">
+                        <div class="platform-header">
+                            <i class="fa-brands fa-windows platform-icon"></i>
+                            <div>
+                                <h3 class="platform-title">Windows Edition</h3>
+                                <p class="platform-version">เวอร์ชัน 1.0.4 • .ZIP (ไม่ต้องติดตั้ง)</p>
+                            </div>
+                        </div>
+                        <ul class="platform-specs">
+                            <li><strong>ระบบปฏิบัติการ:</strong> Windows 10/11 (64-bit)</li>
+                            <li><strong>หน่วยประมวลผล:</strong> Intel i3 / AMD Ryzen 3 ขึ้นไป</li>
+                            <li><strong>หน่วยความจำ (RAM):</strong> 4 GB</li>
+                            <li><strong>พื้นที่จัดเก็บ:</strong> 250 MB</li>
+                        </ul>
+                        <!-- Fake download triggers a realistic download or zip generation/download simulation -->
+                        <button class="btn btn-large btn-download-action font-pixel" onclick="downloadGame()">
+                            <i class="fa-solid fa-arrow-down-to-line"></i> DOWNLOAD NOW
+                        </button>
+                    </div>
+
+                    <!-- Platform Card: Android -->
+                    <div class="platform-card">
+                        <div class="platform-header">
+                            <i class="fa-brands fa-android platform-icon"></i>
+                            <div>
+                                <h3 class="platform-title">Android Edition</h3>
+                                <p class="platform-version">เวอร์ชัน 1.0.4 • .APK</p>
+                            </div>
+                        </div>
+                        <ul class="platform-specs">
+                            <li><strong>ระบบปฏิบัติการ:</strong> Android 8.0 ขึ้นไป</li>
+                            <li><strong>หน่วยประมวลผล:</strong> Snapdragon 450 หรือเทียบเท่า</li>
+                            <li><strong>หน่วยความจำ (RAM):</strong> 2 GB</li>
+                            <li><strong>พื้นที่จัดเก็บ:</strong> 250 MB</li>
+                        </ul>
+                        <button class="btn btn-large btn-download-action font-pixel" onclick="downloadGame()">
+                            <i class="fa-solid fa-arrow-down-to-line"></i> DOWNLOAD NOW
+                        </button>
+                    </div>
+
+                    <!-- Platform Card: iOS -->
+                    <div class="platform-card platform-card-solo">
+                        <div class="platform-header">
+                            <i class="fa-brands fa-apple platform-icon"></i>
+                            <div>
+                                <h3 class="platform-title">iOS Edition</h3>
+                                <p class="platform-version">เวอร์ชัน 1.0.4 • App Store</p>
+                            </div>
+                        </div>
+                        <ul class="platform-specs">
+                            <li><strong>ระบบปฏิบัติการ:</strong> iOS 12.0 ขึ้นไป</li>
+                            <li><strong>หน่วยประมวลผล:</strong> A10 Fusion ขึ้นไป</li>
+                            <li><strong>หน่วยความจำ (RAM):</strong> 2 GB</li>
+                            <li><strong>พื้นที่จัดเก็บ:</strong> 250 MB</li>
+                        </ul>
+                        <button class="btn btn-large btn-download-action font-pixel" onclick="downloadGame()">
+                            <i class="fa-solid fa-arrow-down-to-line"></i> DOWNLOAD NOW
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container footer-container">
+            <div class="footer-brand">
+                <img src="assets/logo.png" alt="MATH BOUND Logo" class="footer-logo">
+                <p>เกมการศึกษาพัฒนาบนแพลตฟอร์ม Unity
+                    เพื่อขับเคลื่อนความกระหายใคร่รู้และฝึกฝนทักษะคำนวณขั้นพื้นฐานอย่างธรรมชาติ</p>
+            </div>
+            <div class="footer-links">
+                <h4>เมนู</h4>
+                <ul>
+                    <li><a href="#hero">หน้าแรก</a></li>
+                    <li><a href="#demo">ระบบการต่อสู้</a></li>
+                    <li><a href="#map">ด่านการผจญภัย</a></li>
+                    <li><a href="#characters">ตัวละครในเกม</a></li>
+                </ul>
+            </div>
+            <div class="footer-credits">
+                <h4>ผู้พัฒนา</h4>
+                <p>© 2026 MATH BOUND Project. สงวนลิขสิทธิ์</p>
+                <p>พัฒนาขึ้นในกรอบโครงการพัฒนาเกมนวัตกรรมการศึกษาสำหรับ NSC 2026</p>
+                <div class="social-icons">
+                    <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                    <a href="#" aria-label="Youtube"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Web Audio API and Game logic Script -->
+    <script src="game.js"></script>
+</body>
+
+</html>
